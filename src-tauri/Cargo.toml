@@ -1,6 +1,6 @@
 [package]
 name = "xiandu-reader"
-version = "0.1.0"
+version = "0.1.1"
 description = "A quiet, local-first pocket novel reader"
 license = "MIT"
 repository = "https://github.com/Louyongqing/xiandu-reader"

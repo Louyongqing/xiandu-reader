@@ -27,6 +27,10 @@ try {
         & python (Join-Path $PSScriptRoot 'reading_continuity.py') --cdp 'http://127.0.0.1:9224'
         $testExitCode = $LASTEXITCODE
     }
+    if ($testExitCode -eq 0) {
+        & python (Join-Path $PSScriptRoot 'scroll_boundary.py') --cdp 'http://127.0.0.1:9224'
+        $testExitCode = $LASTEXITCODE
+    }
 } finally {
     if ($nativeProcess -and -not $nativeProcess.HasExited) {
         $null = $nativeProcess.CloseMainWindow()

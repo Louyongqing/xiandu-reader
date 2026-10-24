@@ -1,7 +1,7 @@
 {
   "name": "xiandu-reader",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "闲读 · 一个安静的本地桌面小说阅读器，使用 Tauri、React 和 TypeScript 构建。",
   "license": "MIT",
   "repository": {

@@ -20,7 +20,7 @@
 
 ## 使用
 
-在 [Releases](https://github.com/Louyongqing/xiandu-reader/releases) 下载 `xiandu-reader-0.1.0-windows-x64.zip`，解压后双击 `闲读.exe`。系统需要 Microsoft Edge WebView2 Runtime。
+在 [Releases](https://github.com/Louyongqing/xiandu-reader/releases) 下载 `xiandu-reader-0.1.1-windows-x64.zip`，解压后双击 `闲读.exe`。系统需要 Microsoft Edge WebView2 Runtime。更新时先退出旧版，再运行新版；本机已有书架和阅读进度会保留。
 
 - 默认窗口为 **420 × 780**，可拖动顶部标题栏，缩放到最小 340 × 560；图钉按钮切换窗口置顶。
 - 点右上角 `+`，选择本地文件；也可以直接拖入窗口。支持多文件导入、相同内容去重、搜索、排序、列表视图、收藏和移除。
@@ -88,11 +88,14 @@ python -m pip install playwright
 python -m playwright install chromium
 python tests/ui_checks.py
 python tests/reading_continuity.py
+python tests/scroll_boundary.py
 ```
 
 脚本生成原创 TXT / EPUB / FB2 / MOBI / PDF 测试文件，覆盖导入、去重、错误提示、翻页、跨章、字号重排、340 × 560 小窗口、书签、夜间模式、便签、滚动续读、PDF 缩放和持久化。结果及截图位于被忽略的 `test-results/`。
 
 连续阅读回归额外覆盖自动接章、前后滚动时的文字位置、跨章书签和续读、目录与进度条、排版缓存失效后的整章文字完整性，以及连续读完 40 个短章节时的渲染数量限制。原生测试启动器也会在真实 WebView2 中执行这组回归。
+
+`scroll_boundary.py` 使用原创测试书，在 150% 缩放、21 号黑体和宽松行距下反复检查章尾的小数像素位置，防止章节回收与位置恢复互相触发渲染循环。支持通过 `--cdp` 在隔离的原生测试窗口中执行；`run-native.ps1` 已包含这项检查。
 
 运行 `./tests/run-native.ps1` 可以测试真实打包应用。测试启动器临时设置 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--remote-debugging-port=9224` 与独立的 `WEBVIEW2_USER_DATA_FOLDER`，完成后关闭测试进程并恢复环境变量；交付程序没有启用远程调试。可选 AZW3 检查读取系统临时目录下 `xiandu-format-check/sample.azw3`，测试书籍不随程序分发。
 
