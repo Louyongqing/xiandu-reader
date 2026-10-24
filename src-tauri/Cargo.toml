@@ -1,0 +1,23 @@
+[package]
+name = "xiandu-reader"
+version = "0.1.0"
+description = "A quiet, local-first pocket novel reader"
+license = "MIT"
+repository = "https://github.com/Louyongqing/xiandu-reader"
+edition = "2021"
+
+[lib]
+name = "xiandu_reader_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "~2.10.3", features = [] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

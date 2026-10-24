@@ -1,0 +1,268 @@
+{
+  "cargo:fxhash@0.2.1": {
+    "files": [
+      {
+        "file": "fxhash-0.2.1-NOTICE.txt",
+        "source": "https://docs.rs/crate/fxhash/0.2.1/source/lib.rs"
+      },
+      {
+        "file": "servo-html5ever-0e4e125b86-LICENSE-APACHE",
+        "source": "https://www.apache.org/licenses/LICENSE-2.0"
+      }
+    ],
+    "source": "https://github.com/cbreeden/fxhash/tree/a03cbf42dde010250adef75908f109be197d982b",
+    "note": "Used under the Apache-2.0 license option declared in its original source."
+  },
+  "cargo:phf_macros@0.10.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-3cc6f05cb0-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/3cc6f05cb07933af4cf886645d1170bdcb306b6b/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/3cc6f05cb07933af4cf886645d1170bdcb306b6b"
+  },
+  "cargo:webview2-com-macros@0.8.1": {
+    "files": [
+      {
+        "file": "wravery-webview2-rs-dffa41a8a4-LICENSE",
+        "source": "https://raw.githubusercontent.com/wravery/webview2-rs/dffa41a8a46d3f5565eefbff2de57d38d399f158/LICENSE"
+      }
+    ],
+    "source": "https://github.com/wravery/webview2-rs/tree/dffa41a8a46d3f5565eefbff2de57d38d399f158"
+  },
+  "cargo:webview2-com-sys@0.38.2": {
+    "files": [
+      {
+        "file": "wravery-webview2-rs-b74dc5e2b3-LICENSE",
+        "source": "https://raw.githubusercontent.com/wravery/webview2-rs/b74dc5e2b394044bea5191052868ce7a106c202c/LICENSE"
+      }
+    ],
+    "source": "https://github.com/wravery/webview2-rs/tree/b74dc5e2b394044bea5191052868ce7a106c202c"
+  },
+  "cargo:unic-ucd-ident@0.9.0": {
+    "files": [
+      {
+        "file": "open-i18n-rust-unic-8a6ce83063-COPYRIGHT.md",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/8a6ce83063d90b91ae2ce59eddb803edd393fca9/COPYRIGHT.md"
+      },
+      {
+        "file": "open-i18n-rust-unic-8a6ce83063-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/8a6ce83063d90b91ae2ce59eddb803edd393fca9/LICENSE-APACHE"
+      },
+      {
+        "file": "open-i18n-rust-unic-8a6ce83063-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/8a6ce83063d90b91ae2ce59eddb803edd393fca9/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/open-i18n/rust-unic/tree/8a6ce83063d90b91ae2ce59eddb803edd393fca9"
+  },
+  "cargo:phf@0.10.1": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-bed01538ae-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/bed01538ae576876f11189d541875d228acef9e8/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/bed01538ae576876f11189d541875d228acef9e8"
+  },
+  "cargo:phf_shared@0.10.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-3ea14b2166-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/3ea14b2166553ad6e7b9afe7244144f5d661b6c6/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/3ea14b2166553ad6e7b9afe7244144f5d661b6c6"
+  },
+  "cargo:webview2-com@0.38.2": {
+    "files": [
+      {
+        "file": "wravery-webview2-rs-b74dc5e2b3-LICENSE",
+        "source": "https://raw.githubusercontent.com/wravery/webview2-rs/b74dc5e2b394044bea5191052868ce7a106c202c/LICENSE"
+      }
+    ],
+    "source": "https://github.com/wravery/webview2-rs/tree/b74dc5e2b394044bea5191052868ce7a106c202c"
+  },
+  "cargo:alloc-stdlib@0.2.2": {
+    "files": [
+      {
+        "file": "dropbox-rust-alloc-no-stdlib-6032b6a9b2-LICENSE",
+        "source": "https://raw.githubusercontent.com/dropbox/rust-alloc-no-stdlib/6032b6a9b20e03737135c55a0270ccffcc1438ef/LICENSE"
+      }
+    ],
+    "source": "https://github.com/dropbox/rust-alloc-no-stdlib/tree/6032b6a9b20e03737135c55a0270ccffcc1438ef"
+  },
+  "npm:isarray@1.0.0": {
+    "files": [
+      {
+        "file": "isarray-1.0.0-LICENSE.txt",
+        "source": "https://www.npmjs.com/package/isarray/v/1.0.0"
+      }
+    ],
+    "source": "https://www.npmjs.com/package/isarray/v/1.0.0"
+  },
+  "cargo:mac@0.1.1": {
+    "files": [
+      {
+        "file": "mac-0.1.1-NOTICE.txt",
+        "source": "https://docs.rs/crate/mac/0.1.1/source/README.md"
+      },
+      {
+        "file": "servo-html5ever-0e4e125b86-LICENSE-APACHE",
+        "source": "https://www.apache.org/licenses/LICENSE-2.0"
+      }
+    ],
+    "source": "https://github.com/reem/rust-mac/tree/66afc663b68a65633ea165c742b5a9c6734581c2",
+    "note": "Used under the Apache-2.0 license option declared in its original README."
+  },
+  "cargo:phf_shared@0.8.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-81c7cc5b48-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/81c7cc5b48649108428671d3b8ad151f6fbdb359/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/81c7cc5b48649108428671d3b8ad151f6fbdb359"
+  },
+  "cargo:phf_codegen@0.8.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-81c7cc5b48-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/81c7cc5b48649108428671d3b8ad151f6fbdb359/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/81c7cc5b48649108428671d3b8ad151f6fbdb359"
+  },
+  "cargo:match_token@0.1.0": {
+    "files": [
+      {
+        "file": "servo-html5ever-0e4e125b86-COPYRIGHT",
+        "source": "https://raw.githubusercontent.com/servo/html5ever/0e4e125b8672abad4ff14d1e0043d3be9305af6a/COPYRIGHT"
+      },
+      {
+        "file": "servo-html5ever-0e4e125b86-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/servo/html5ever/0e4e125b8672abad4ff14d1e0043d3be9305af6a/LICENSE-APACHE"
+      },
+      {
+        "file": "servo-html5ever-0e4e125b86-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/servo/html5ever/0e4e125b8672abad4ff14d1e0043d3be9305af6a/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/servo/html5ever/tree/0e4e125b8672abad4ff14d1e0043d3be9305af6a"
+  },
+  "cargo:unic-char-property@0.9.0": {
+    "files": [
+      {
+        "file": "open-i18n-rust-unic-5878605364-COPYRIGHT.md",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/COPYRIGHT.md"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-APACHE"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/open-i18n/rust-unic/tree/5878605364af97a3358368a6eaef02104af2e016"
+  },
+  "cargo:unic-common@0.9.0": {
+    "files": [
+      {
+        "file": "open-i18n-rust-unic-5878605364-COPYRIGHT.md",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/COPYRIGHT.md"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-APACHE"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/open-i18n/rust-unic/tree/5878605364af97a3358368a6eaef02104af2e016"
+  },
+  "cargo:phf_generator@0.10.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-3ea14b2166-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/3ea14b2166553ad6e7b9afe7244144f5d661b6c6/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/3ea14b2166553ad6e7b9afe7244144f5d661b6c6"
+  },
+  "cargo:convert_case@0.4.0": {
+    "files": [
+      {
+        "file": "convert-case-upstream-LICENSE.txt",
+        "source": "https://raw.githubusercontent.com/rutrum/convert-case/master/LICENSE"
+      }
+    ],
+    "source": "https://github.com/rutrum/convert-case/tree/300d9eef9e8c970e15f324afbc3df8b6a4ebbf71",
+    "note": "The crate declares MIT; this is the upstream project license retrieved at publication time."
+  },
+  "cargo:selectors@0.24.0": {
+    "files": [
+      {
+        "file": "servo-servo-e82d7868d9-LICENSE",
+        "source": "https://raw.githubusercontent.com/servo/servo/e82d7868d999d84f6d59719e4c397e5252aecb85/LICENSE"
+      }
+    ],
+    "source": "https://github.com/servo/servo/tree/e82d7868d999d84f6d59719e4c397e5252aecb85"
+  },
+  "cargo:unic-ucd-version@0.9.0": {
+    "files": [
+      {
+        "file": "open-i18n-rust-unic-5878605364-COPYRIGHT.md",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/COPYRIGHT.md"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-APACHE"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/open-i18n/rust-unic/tree/5878605364af97a3358368a6eaef02104af2e016"
+  },
+  "cargo:phf_generator@0.8.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-81c7cc5b48-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/81c7cc5b48649108428671d3b8ad151f6fbdb359/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/81c7cc5b48649108428671d3b8ad151f6fbdb359"
+  },
+  "cargo:unic-char-range@0.9.0": {
+    "files": [
+      {
+        "file": "open-i18n-rust-unic-5878605364-COPYRIGHT.md",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/COPYRIGHT.md"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-APACHE",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-APACHE"
+      },
+      {
+        "file": "open-i18n-rust-unic-5878605364-LICENSE-MIT",
+        "source": "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT"
+      }
+    ],
+    "source": "https://github.com/open-i18n/rust-unic/tree/5878605364af97a3358368a6eaef02104af2e016"
+  },
+  "cargo:phf@0.8.0": {
+    "files": [
+      {
+        "file": "sfackler-rust-phf-81c7cc5b48-LICENSE",
+        "source": "https://raw.githubusercontent.com/sfackler/rust-phf/81c7cc5b48649108428671d3b8ad151f6fbdb359/LICENSE"
+      }
+    ],
+    "source": "https://github.com/sfackler/rust-phf/tree/81c7cc5b48649108428671d3b8ad151f6fbdb359"
+  }
+}

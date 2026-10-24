@@ -1,0 +1,6 @@
+/* Use locally installed Chinese typefaces so the reader remains entirely offline. */
+@font-face {
+  font-family: 'Reader Serif';
+  src: local('Noto Serif SC'), local('Source Han Serif SC'), local('SimSun');
+  font-display: swap;
+}
