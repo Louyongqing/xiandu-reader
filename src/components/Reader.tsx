@@ -22,8 +22,10 @@ import {
   X,
 } from 'lucide-react'
 import type { Book, BookContent, Position, ReaderSettings } from '../types'
-import { pageAtOffset, paginate, type Page } from '../lib/text'
+import { pageAtOffset } from '../lib/text'
+import { useChapterPages } from '../lib/useChapterPages'
 import { Appearance } from './Appearance'
+import { ScrollText } from './ScrollText'
 import { Modal } from './ui'
 
 const PdfPage = lazy(() => import('./PdfPage'))
@@ -50,7 +52,7 @@ export function Reader({
   suspended: boolean
 }) {
   const [position, setPosition] = useState<Position>(initialPosition || book.progress)
-  const [pages, setPages] = useState<Page[]>([])
+  const [navigation, setNavigation] = useState(0)
   const [menu, setMenu] = useState(false)
   const [panel, setPanel] = useState<'toc' | 'settings' | null>(null)
   const [tocTab, setTocTab] = useState<'chapters' | 'bookmarks'>('chapters')
@@ -61,11 +63,18 @@ export function Reader({
   const measure = useRef<HTMLDivElement>(null)
   const touch = useRef({ x: 0, y: 0, at: 0, movedAt: 0 })
   const wheel = useRef(0)
-  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const chapterIndex = Math.min(content.chapters.length - 1, Math.max(0, position.chapter))
   const chapter = content.chapters[chapterIndex]
   const pdf = !!content.pdf
   const scrollMode = !pdf && settings.turn === 'scroll'
+  const pages = useChapterPages(
+    content.chapters,
+    chapterIndex,
+    dimensions,
+    settings,
+    measure,
+    !pdf && !scrollMode,
+  )
   const pageIndex = Math.max(0, pageAtOffset(pages, position.offset))
   const currentPage = pages[pageIndex]
   const offset = pdf ? 0 : scrollMode ? position.offset : (currentPage?.start ?? 0)
@@ -79,15 +88,12 @@ export function Reader({
     : (lengths.slice(0, chapterIndex).reduce((a, b) => a + b, 0) +
         (scrollMode ? Math.min(chapter.text.length, offset + 1) : currentPage?.end || 0)) /
       Math.max(totalLength, 1)
-  const paragraphs = useMemo(() => {
-    let offset = 0
-    return chapter.text.split(/(?<=\n)/).map((text) => {
-      const item = { text, offset }
-      offset += text.length
-      return item
-    })
-  }, [chapter.text])
   const closePanel = useCallback(() => setPanel(null), [])
+  const trackPosition = useCallback((next: Position) => {
+    setPosition((current) =>
+      current.chapter === next.chapter && current.offset === next.offset ? current : next,
+    )
+  }, [])
 
   useLayoutEffect(() => {
     if (!viewport.current) return
@@ -99,33 +105,6 @@ export function Reader({
     return () => observer.disconnect()
   }, [])
 
-  useLayoutEffect(() => {
-    if (pdf || scrollMode || !measure.current || dimensions.height < 1) return
-    const element = measure.current
-    const nextPages = paginate(chapter.text, (text) => {
-      element.textContent = text
-      return element.scrollHeight <= dimensions.height - 2
-    })
-    element.textContent = ''
-    setPages(nextPages)
-  }, [
-    chapter.text,
-    dimensions,
-    settings.fontSize,
-    settings.lineHeight,
-    settings.font,
-    pdf,
-    scrollMode,
-  ])
-
-  useLayoutEffect(() => {
-    if (!scrollMode || !viewport.current) return
-    const spans = Array.from(viewport.current.querySelectorAll<HTMLElement>('[data-offset]'))
-    const target = spans.findLast((span) => Number(span.dataset.offset) <= position.offset)
-    viewport.current.scrollTop = target?.offsetTop || 0
-    // Restore only on chapter/mode changes, not while the user is scrolling.
-  }, [chapterIndex, scrollMode])
-
   useEffect(() => {
     if (!pdf && !scrollMode && !currentPage) return
     onUpdate(book.id, {
@@ -135,28 +114,24 @@ export function Reader({
     })
   }, [book.id, chapterIndex, offset, progress, pdf, scrollMode, currentPage, onUpdate])
 
-  useEffect(
-    () => () => {
-      if (scrollTimer.current) clearTimeout(scrollTimer.current)
-    },
-    [],
-  )
-
-  const jump = useCallback(
+  const navigate = useCallback(
     (target: Position) => {
       setPosition({
         chapter: Math.max(0, Math.min(content.chapters.length - 1, target.chapter)),
         offset: Math.max(0, target.offset),
       })
+      setNavigation((value) => value + 1)
+    },
+    [content.chapters.length],
+  )
+
+  const jump = useCallback(
+    (target: Position) => {
+      navigate(target)
       setPanel(null)
       setMenu(false)
-      if (scrollMode && target.chapter === chapterIndex && viewport.current) {
-        const spans = Array.from(viewport.current.querySelectorAll<HTMLElement>('[data-offset]'))
-        viewport.current.scrollTop =
-          spans.findLast((span) => Number(span.dataset.offset) <= target.offset)?.offsetTop || 0
-      }
     },
-    [content.chapters.length, scrollMode, chapterIndex],
+    [navigate],
   )
 
   const turn = useCallback(
@@ -186,12 +161,12 @@ export function Reader({
         notify('全书读完了，回味一下吧')
         return
       }
-      setPosition({
+      navigate({
         chapter: next,
         offset: step < 0 && !pdf ? content.chapters[next].text.length : 0,
       })
     },
-    [panel, scrollMode, pdf, pages, pageIndex, chapterIndex, content, notify],
+    [panel, scrollMode, pdf, pages, pageIndex, chapterIndex, content, notify, navigate],
   )
 
   useEffect(() => {
@@ -243,23 +218,6 @@ export function Reader({
     notify(currentBookmark ? '已移除书签' : '已添加书签')
   }
 
-  function onScroll() {
-    if (!scrollMode || !viewport.current) return
-    const el = viewport.current
-    if (scrollTimer.current) clearTimeout(scrollTimer.current)
-    const first = Array.from(el.querySelectorAll<HTMLElement>('[data-offset]')).find(
-      (span) => span.offsetTop + span.offsetHeight > el.scrollTop,
-    )
-    const nextOffset =
-      el.scrollTop + el.clientHeight >= el.scrollHeight - 3
-        ? Math.max(0, chapter.text.length - 1)
-        : Number(first?.dataset.offset || 0)
-    scrollTimer.current = setTimeout(
-      () => setPosition({ chapter: chapterIndex, offset: nextOffset }),
-      120,
-    )
-  }
-
   return (
     <div
       className={`reader theme-${settings.theme}`}
@@ -294,7 +252,6 @@ export function Reader({
       <div
         className={`reading-viewport ${scrollMode ? 'scroll-mode' : ''} ${pdf ? 'pdf-viewport' : ''}`}
         ref={viewport}
-        onScroll={onScroll}
         onWheel={(event) => {
           if (
             !pdf &&
@@ -342,13 +299,12 @@ export function Reader({
             <PdfPage buffer={content.pdf!} page={chapterIndex} report={notify} />
           </Suspense>
         ) : scrollMode ? (
-          <div className="reading-text scroll-text">
-            {paragraphs.map((part) => (
-              <span key={part.offset} data-offset={part.offset}>
-                {part.text}
-              </span>
-            ))}
-          </div>
+          <ScrollText
+            chapters={content.chapters}
+            position={position}
+            navigation={navigation}
+            onPosition={trackPosition}
+          />
         ) : (
           <div
             className={`reading-text page-text ${settings.turn === 'slide' ? 'animate-page' : ''}`}
@@ -433,7 +389,7 @@ export function Reader({
               min={0}
               max={Math.max(0, content.chapters.length - 1)}
               value={chapterIndex}
-              onChange={(event) => setPosition({ chapter: Number(event.target.value), offset: 0 })}
+              onChange={(event) => navigate({ chapter: Number(event.target.value), offset: 0 })}
             />
             <div className="reader-actions">
               <button

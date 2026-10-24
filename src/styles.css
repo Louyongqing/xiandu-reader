@@ -1569,15 +1569,24 @@ body:has(.native-window) #root {
 }
 .scroll-mode {
   overflow-y: auto;
+  overflow-anchor: none;
   scrollbar-width: none;
   cursor: default;
 }
 .scroll-text {
-  position: relative;
   min-height: 100%;
-  padding-bottom: 20px;
 }
-.scroll-text span {
+.scroll-chapter {
+  padding-bottom: 36px;
+}
+.scroll-chapter-title {
+  margin: 0 0 24px;
+  font-family: var(--reading-font);
+  font-size: calc(var(--reading-size) + 2px);
+  line-height: 1.6;
+  font-weight: 600;
+}
+.scroll-text .reading-text span {
   display: inline;
 }
 .reader-loading {

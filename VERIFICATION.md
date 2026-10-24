@@ -32,3 +32,18 @@
 - NOT VERIFIED：其他操作系统和其他 Windows 设备没有运行测试。本次交付是已在当前 Windows 机器验证的 x64 便携程序。
 - NOT VERIFIED：NSIS 安装器与代码签名未构建；交付使用便携版。
 - 格式支持面向普通未加密小说，不能由样本通过推断所有第三方文件均兼容。电子书文字格式不还原复杂排版和内页插图；PDF 保留原页。
+
+## 自动接章更新（2026-10-24）
+
+- 原因：书籍正文已完整保存在本地，但滚动视图只挂载当前章，滚动事件仅保存偏移；到章尾没有后续正文可读。
+- 修复：滚动视图提前挂载下一章，保留可见内容及前后相邻章节，裁剪远处章节时保留可见文字的位置；目录、进度条、书签和续读使用章节内正文偏移。分页模式在空闲时预排下一章，尺寸、字号、行距或字体改变后重新计算，并取消过期预排任务。
+- `npm test`：12 项通过；`npm run format:check`、`npm run build`、`git diff --check` 均通过。
+- `python tests/reading_continuity.py`：浏览器通过。覆盖滚轮自动跨章、反复前后跨章时文字不跳动、书签跳转、重载后续读、目录和进度条、键盘滚动、工作便签切换、字体/行距/340 × 560 窗口变化后定位，以及分页模式整章拼接与原文逐字一致。
+- 连续滚动读完 40 个短章节，所有章节均经过视口，浏览器最多同时挂载 8 章、原生窗口最多 7 章；末章正确停止并显示 100%。
+- `python tests/ui_checks.py`：原有导入、阅读、书架和 PDF 流程通过，页面异常、请求失败和外部请求均为 0。
+- `$env:CARGO_NET_OFFLINE='true'; npm run tauri -- build --no-bundle`：Windows x64 正式构建通过。
+- `./tests/run-native.ps1`：真实 Tauri / WebView2 的原有原生检查和新增连续阅读回归全部通过；页面异常与控制台错误均为 0。测试使用独立临时书架，完成后关闭测试进程。
+- 新增正文通过 React 文本节点渲染，未引入 HTML 注入、远程请求、额外权限、依赖或数据库变更。
+- 新版程序位于 `src-tauri/target/release/xiandu-reader.exe`。原 `release/` 和 GitHub Release 的 v0.1.0 产物没有替换，本节不改变上方初次交付物的记录。
+- 连续阅读证据：`test-results/continuity-browser-report.json`、`test-results/continuity-native-report.json`，对应截图为 `continuous-browser.png`、`continuous-native.png`。
+- NOT VERIFIED：其他系统和 Windows 设备未运行本次更新；没有发布新 GitHub Release。

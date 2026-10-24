@@ -23,6 +23,10 @@ try {
     if (-not $ready) { throw 'The isolated WebView2 test endpoint did not start.' }
     & python (Join-Path $PSScriptRoot 'native_checks.py')
     $testExitCode = $LASTEXITCODE
+    if ($testExitCode -eq 0) {
+        & python (Join-Path $PSScriptRoot 'reading_continuity.py') --cdp 'http://127.0.0.1:9224'
+        $testExitCode = $LASTEXITCODE
+    }
 } finally {
     if ($nativeProcess -and -not $nativeProcess.HasExited) {
         $null = $nativeProcess.CloseMainWindow()
